@@ -27,6 +27,7 @@ Route::get('/', [ProductoController::class, 'inicioRestaurantes'])->name('index'
 
 
 Route::prefix('direcciones-personales')->group( function (){
+    Route::get('/{id}/pdf',[DireccionPersonalController::class,'showPdf'])->name('direccion-personalPdf.show');
     Route::get('/{id}',[DireccionPersonalController::class,'show'])->name('direccion-personal.show');
     Route::get('/create/direccion-personal',[DireccionPersonalController::class,'create'])->name('direccion-personal.create');
     Route::post('/',[DireccionPersonalController::class,'store'])->name('direccion-personal.store');

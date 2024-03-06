@@ -5,7 +5,6 @@
 @section('title', 'Detalles de Dirección')
 
 @section('content')
-
     <div class="container">
         <div class="row align-items-center">
             <div class="col-auto">
@@ -45,6 +44,7 @@
                 </ul>
             </div>
             <div class="text-right">
+                <a class="btn btn-primary" href="{{route('direccion-personalPdf.show',$direccion->id)}}">Generar PDF</a>
                 <a class="btn btn-primary" href="{{route('direccion-personal.edit',$direccion->id)}}">Editar</a>
             </div>
         </div>

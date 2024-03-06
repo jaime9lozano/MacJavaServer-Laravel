@@ -6,6 +6,7 @@ use App\Http\Requests\DireccionPersonalRequest;
 use App\Http\Resources\DireccionPersonalResource;
 use App\Models\DireccionPersonal;
 use Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Http\FormRequest;
@@ -64,6 +65,15 @@ class DireccionPersonalController extends Controller
         $res=$this->getById($id);
 
         return view('direccionesPersonales.show')->with('direccion',new DireccionPersonalResource($res));
+    }
+
+    public function showPdf($id)
+    {
+        $res = $this->getById($id);
+
+        $pdf = PDF::loadView('direccionesPersonales.pdf', ['direccion' => new DireccionPersonalResource($res)]);
+
+        return $pdf->stream();
     }
 
     public function edit($id)
